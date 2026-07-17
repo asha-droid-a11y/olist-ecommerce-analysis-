@@ -1,3 +1,8 @@
+/*=========================================================
+OLIST E-COMMERCE SQL ANALYSIS
+Author: Asha Kumari
+=========================================================*/
+
 -- CREATE DATABASE olist;
 USE olist;
 
@@ -117,6 +122,9 @@ truncate table geolocation;
 SET GLOBAL local_infile = 1;
 
 /*=========================================================
+BASIC KPI QUERIES
+=========================================================*/
+/*=========================================================
 1. Total Orders
 =========================================================*/
 
@@ -209,75 +217,8 @@ SELECT
 FROM order_reviews;
 
 /*=========================================================
-11. Highest Revenue Product Category
+SALES & REVENUE ANALYSIS
 =========================================================*/
-
-SELECT
-    p.product_category_name AS product_category,
-    SUM(oi.price) AS total_revenue
-FROM products p
-JOIN order_items oi
-    ON p.product_id = oi.product_id
-GROUP BY p.product_category_name
-ORDER BY total_revenue DESC
-LIMIT 1;
-
-/*=========================================================
-12. State with the Highest Number of Customers
-=========================================================*/
-
-SELECT
-    customer_state,
-    COUNT(customer_id) AS total_customers
-FROM customers
-GROUP BY customer_state
-ORDER BY total_customers DESC
-LIMIT 1;
-
-/*=========================================================
-13. Payment Method Analysis
-=========================================================*/
-
-SELECT
-    payment_type,
-    COUNT(*) AS total_payments,
-    SUM(payment_value) AS total_revenue
-FROM order_payments
-GROUP BY payment_type
-ORDER BY total_payments DESC;
-
-/*=========================================================
-14. Top 10 Sellers by Revenue
-=========================================================*/
-
-SELECT
-    s.seller_id,
-    COUNT(oi.order_id) AS total_orders,
-    SUM(oi.price) AS total_revenue
-FROM sellers s
-JOIN order_items oi
-    ON s.seller_id = oi.seller_id
-GROUP BY s.seller_id
-ORDER BY total_revenue DESC
-LIMIT 10;
-
-/*=========================================================
-15. Top 10 Customer Cities by Revenue
-=========================================================*/
-
-SELECT
-    c.customer_city,
-    COUNT(oi.order_id) AS total_orders,
-    SUM(oi.price) AS total_revenue
-FROM customers c
-JOIN orders o
-    ON c.customer_id = o.customer_id
-JOIN order_items oi
-    ON o.order_id = oi.order_id
-GROUP BY c.customer_city
-ORDER BY total_revenue DESC
-LIMIT 10;
-
 /*=========================================================
 11. Highest Revenue Product Category
 =========================================================*/
@@ -348,6 +289,79 @@ GROUP BY c.customer_city
 ORDER BY total_revenue DESC
 LIMIT 10;
 
+/*=========================================================
+11. Highest Revenue Product Category
+=========================================================*/
+
+SELECT
+    p.product_category_name AS product_category,
+    SUM(oi.price) AS total_revenue
+FROM products p
+JOIN order_items oi
+    ON p.product_id = oi.product_id
+GROUP BY p.product_category_name
+ORDER BY total_revenue DESC
+LIMIT 1;
+
+/*=========================================================
+12. State with the Highest Number of Customers
+=========================================================*/
+
+SELECT
+    customer_state,
+    COUNT(customer_id) AS total_customers
+FROM customers
+GROUP BY customer_state
+ORDER BY total_customers DESC
+LIMIT 1;
+
+/*=========================================================
+13. Payment Method Analysis
+=========================================================*/
+
+SELECT
+    payment_type,
+    COUNT(*) AS total_payments,
+    SUM(payment_value) AS total_revenue
+FROM order_payments
+GROUP BY payment_type
+ORDER BY total_payments DESC;
+
+/*=========================================================
+14. Top 10 Sellers by Revenue
+=========================================================*/
+
+SELECT
+    s.seller_id,
+    COUNT(oi.order_id) AS total_orders,
+    SUM(oi.price) AS total_revenue
+FROM sellers s
+JOIN order_items oi
+    ON s.seller_id = oi.seller_id
+GROUP BY s.seller_id
+ORDER BY total_revenue DESC
+LIMIT 10;
+
+/*=========================================================
+15. Top 10 Customer Cities by Revenue
+=========================================================*/
+
+SELECT
+    c.customer_city,
+    COUNT(oi.order_id) AS total_orders,
+    SUM(oi.price) AS total_revenue
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+JOIN order_items oi
+    ON o.order_id = oi.order_id
+GROUP BY c.customer_city
+ORDER BY total_revenue DESC
+LIMIT 10;
+
+/*=========================================================
+ADVANCED SQL (CTEs, Window Functions)
+=========================================================*/
 /*=========================================================
 21. Product Category Revenue Ranking
 =========================================================*/
