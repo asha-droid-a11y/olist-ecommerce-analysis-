@@ -42,7 +42,7 @@ CREATE TABLE sellers (
     seller_state CHAR(2)
 );
 
-===========================
+-- ===========================
 Orders
 -- ===========================
 CREATE TABLE orders (
