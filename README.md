@@ -10,11 +10,11 @@ The objective of this project is to analyze customer behavior, sales performance
 
 The project includes:
 
-- 🧹 Data Cleaning & Preprocessing (Python)
-- 📊 Exploratory Data Analysis (EDA)
-- 💾 SQL Business Analysis
-- 📈 Interactive Power BI Dashboard
-- 💡 Business Insights & Recommendations
+- Data Cleaning & Preprocessing (Python)
+- Exploratory Data Analysis (EDA)
+- SQL Business Analysis
+- Interactive Power BI Dashboard
+- Business Insights & Recommendations
 
 ---
 
@@ -234,5 +234,5 @@ This project demonstrates an end-to-end data analytics workflow using **Python, 
 
 **Asha Kumari**
 
-- GitHub: https://github.com/\asha-droid-a11y/
-- LinkedIn: https://linkedin.com/in/asha-k-93062b290
+- GitHub: https://github.com/asha-droid-a11y
+- LinkedIn: www.linkedin.com/in/asha-kumari-analyst2005
